@@ -77,10 +77,10 @@
     - '"bionic" in os_release.stdout'
     - need_dnssec_allow_downgrade.rc
 
-- name: Install python3
+- name: Install python
   raw:
     apt-get update && \
-    DEBIAN_FRONTEND=noninteractive apt-get install -y python3-minimal
+    DEBIAN_FRONTEND=noninteractive apt-get install -y python-minimal
   become: true
   environment: {}
   when:
@@ -95,5 +95,4 @@
   package:
     name: dbus
     state: present
-    use: apt
   become: true
