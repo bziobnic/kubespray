@@ -1,2 +1,4 @@
 ---
 kube_resolv_conf: "/run/systemd/resolve/resolv.conf"
+pkg_mgr: apt
+

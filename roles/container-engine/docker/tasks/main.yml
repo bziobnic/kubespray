@@ -159,7 +159,7 @@
   when: ansible_distribution in ["CentOS","RedHat","OracleLinux"] and not is_ostree
 
 - name: ensure docker packages are installed
-  action: "{{ docker_package_info.pkg_mgr }}"
+  action: "{{ docker_package_info.pkg_mgr | default('apt') }}"
   args:
     pkg: "{{ item.name }}"
     force: "{{ item.force|default(omit) }}"
@@ -176,7 +176,7 @@
   ignore_errors: true
 
 - name: Ensure docker packages are installed
-  action: "{{ docker_package_info.pkg_mgr }}"
+  action: "{{ docker_package_info.pkg_mgr | default('apt') }}"
   args:
     name: "{{ item.name }}"
     state: "{{ item.state | default('present') }}"

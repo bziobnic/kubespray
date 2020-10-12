@@ -72,7 +72,7 @@
 
 - name: Install packages requirements
   action:
-    module: "{{ ansible_pkg_mgr }}"
+    module: "{{ ansible_pkg_mgr | default('apt') }}"
     name: "{{ required_pkgs | default([]) | union(common_required_pkgs|default([])) }}"
     state: latest
   register: pkgs_task_result
