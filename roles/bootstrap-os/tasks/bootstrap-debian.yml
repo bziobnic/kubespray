@@ -99,6 +99,5 @@
   package:
     name: dbus
     state: present
-    use: apt
   become: true
 

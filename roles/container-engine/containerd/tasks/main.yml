@@ -91,7 +91,7 @@
     - not is_ostree
 
 - name: ensure containerd packages are installed
-  action: "{{ containerd_package_info.pkg_mgr }}"
+  action: "{{ containerd_package_info.pkg_mgr | default('apt') }}"
   args:
     pkg: "{{ item.name }}"
     force: "{{ item.force | default(omit) }}"
@@ -115,7 +115,7 @@
   register: runc_stat
 
 - name: Install runc package if necessary
-  action: "{{ containerd_package_info.pkg_mgr }}"
+  action: "{{ containerd_package_info.pkg_mgr | default('apt') }}"
   args:
     pkg: runc
     state: present
